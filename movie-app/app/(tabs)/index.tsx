@@ -4,9 +4,15 @@ import { images } from "@/constants/images";
 import { Link } from "expo-router";
 import { Text, View, Image, ScrollView } from "react-native";
 import { useRouter } from "expo-router";
+import useFetch from "@/services/useFetch";
+import { fetchMovies } from "@/services/api";
 
 export default function Index() {
   const router = useRouter();
+
+  const { data, loading, error, refetch, reset } = useFetch(() =>
+    fetchMovies({ query: "" })
+  );
 
   return (
     <View className="flex-1 bg-primary">
