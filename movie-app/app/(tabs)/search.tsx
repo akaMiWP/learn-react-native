@@ -26,7 +26,9 @@ const search = () => {
       }
     };
 
-    func();
+    const timeoutId = setTimeout(func, 500);
+
+    return () => clearTimeout(timeoutId);
   }, [searchQuery]);
 
   return (
